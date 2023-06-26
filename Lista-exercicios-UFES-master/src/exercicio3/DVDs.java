@@ -4,8 +4,8 @@ public class DVDs extends DetalhesProduto {
 
     private int duracao;
 
-    public DVDs(String nome, double preco, int duracao) {
-        super(nome, preco);
+    public DVDs(String nome, double preco, int duracao, int codigoDeBarra) {
+        super(nome, preco, codigoDeBarra);
         this.duracao = duracao;
     }
 

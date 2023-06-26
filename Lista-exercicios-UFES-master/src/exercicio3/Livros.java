@@ -4,8 +4,8 @@ public class Livros extends DetalhesProduto {
 
     private String autor;
 
-    public Livros(String nome, double preco, String autor) {
-        super(nome, preco);
+    public Livros(String nome, double preco, String autor, int codigoDeBarra) {
+        super(nome, preco, codigoDeBarra);
         this.autor = autor;
     }
 
