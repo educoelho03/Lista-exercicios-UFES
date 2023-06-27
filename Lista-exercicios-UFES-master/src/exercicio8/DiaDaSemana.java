@@ -1,5 +1,8 @@
 package exercicio8;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,6 +30,9 @@ public class DiaDaSemana {
                 System.out.println("Formato de data inválido. A data não deve conter letras.");
             } else {
                 try {
+                    FileWriter arq = new FileWriter("C:\\datas.txt");
+                    PrintWriter gravarArq = new PrintWriter(arq);
+
                     formatoData.setLenient(false); // Impede a interpretação de datas inválidas, como 31/02/2023
                     Date data = formatoData.parse(dataString);
 
@@ -38,7 +44,11 @@ public class DiaDaSemana {
 
                     System.out.println("A data " + formatoData.format(data) + " cai em um(a) " + nomeDiaSemana + ".");
                     dataValida = true;
-                } catch (java.text.ParseException e) {
+
+                    gravarArq.println("A data " + formatoData.format(data) + " cai em um(a) " + nomeDiaSemana + ".");
+
+                    arq.close();
+                } catch (java.text.ParseException | IOException e) {
                     System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
                 }
             }
