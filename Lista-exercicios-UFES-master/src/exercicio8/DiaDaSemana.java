@@ -1,8 +1,6 @@
-package exercicio8;
-
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,8 +28,8 @@ public class DiaDaSemana {
                 System.out.println("Formato de data inválido. A data não deve conter letras.");
             } else {
                 try {
-                    FileWriter arq = new FileWriter("C:\\datas.txt");
-                    PrintWriter gravarArq = new PrintWriter(arq);
+                    FileWriter fileWriter = new FileWriter("C:\\Users\\ecoelho\\OneDrive - Constancia Investimentos\\Desktop\\datas.txt", true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
                     formatoData.setLenient(false); // Impede a interpretação de datas inválidas, como 31/02/2023
                     Date data = formatoData.parse(dataString);
@@ -45,11 +43,15 @@ public class DiaDaSemana {
                     System.out.println("A data " + formatoData.format(data) + " cai em um(a) " + nomeDiaSemana + ".");
                     dataValida = true;
 
-                    gravarArq.println("A data " + formatoData.format(data) + " cai em um(a) " + nomeDiaSemana + ".");
+                    // Adicionar a data ao final do arquivo
+                    bufferedWriter.write("A data " + formatoData.format(data) + " cai em um(a) " + nomeDiaSemana + ".");
+                    bufferedWriter.newLine();
 
-                    arq.close();
+                    // Fechar os recursos
+                    bufferedWriter.close();
+                    fileWriter.close();
                 } catch (java.text.ParseException | IOException e) {
-                    System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+                    System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy. " + e.getMessage());
                 }
             }
         }
