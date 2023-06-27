@@ -30,7 +30,7 @@ public class DiaDaSemana {
                 System.out.println("Formato de data inválido. A data não deve conter letras.");
             } else {
                 try {
-                    FileWriter fileWriter = new FileWriter("C:\\Users\\ecoelho\\OneDrive - Constancia Investimentos\\Desktop\\datas.txt", true);
+                    FileWriter fileWriter = new FileWriter("C:\\datas.txt", true);
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
                     formatoData.setLenient(false); // Impede a interpretação de datas inválidas, como 31/02/2023
